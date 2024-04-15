@@ -84,6 +84,14 @@ app.get('/c', (request, response) => {
   response.status(200).sendFile('public/c.html', { root: __dirname });
 });
 
+app.get('/d', (request, response) => {
+  response.status(200).sendFile('public/d.html', { root: __dirname });
+});
+
+app.get('/e', (request, response) => {
+  response.status(200).sendFile('public/e.html', { root: __dirname });
+});
+
 // Now, we can access our HTML using these more convenient `/a`, `/b`, and `/c` routes.
 
 

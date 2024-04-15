@@ -10,6 +10,8 @@
   "author": "CS 160 course staff",
   "license": "UNLICENSED",
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "express": "^4.18.2"
   }
 }
