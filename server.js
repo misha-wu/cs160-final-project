@@ -76,8 +76,8 @@ app.get('/aitranslator', async (request, response) => {
 });
 
 // Express has a helper function for this, so we don't need to use the filesystem library directly:
-app.get('/b', (request, response) => {
-  response.status(200).sendFile('public/b.html', { root: __dirname }); // We do need to tell Express where to look!
+app.get('/individualword', (request, response) => {
+  response.status(200).sendFile('public/individualword.html', { root: __dirname }); // We do need to tell Express where to look!
 });
 
 app.get('/c', (request, response) => {
@@ -88,8 +88,8 @@ app.get('/d', (request, response) => {
   response.status(200).sendFile('public/d.html', { root: __dirname });
 });
 
-app.get('/wordbank', (request, response) => {
-  response.status(200).sendFile('public/wordbank.html', { root: __dirname });
+app.get('/wordlist', (request, response) => {
+  response.status(200).sendFile('public/wordlist.html', { root: __dirname });
 });
 
 // Now, we can access our HTML using these more convenient `/a`, `/b`, and `/c` routes.
