@@ -70,8 +70,8 @@ app.get('/add/:first/:second', (request, response) => {
 //   filesystem operation before responding to the user.
 // Try visiting http://localhost:8000/a rather than http://localhost:8000/a.html -- you'll notice that
 //   it works just the same!
-app.get('/a', async (request, response) => {
-  const htmlContents = await fs.readFile('public/a.html');
+app.get('/aitranslator', async (request, response) => {
+  const htmlContents = await fs.readFile('public/aitranslator.html');
   response.status(200).send(htmlContents.toString());
 });
 
@@ -88,8 +88,8 @@ app.get('/d', (request, response) => {
   response.status(200).sendFile('public/d.html', { root: __dirname });
 });
 
-app.get('/e', (request, response) => {
-  response.status(200).sendFile('public/e.html', { root: __dirname });
+app.get('/wordbank', (request, response) => {
+  response.status(200).sendFile('public/wordbank.html', { root: __dirname });
 });
 
 // Now, we can access our HTML using these more convenient `/a`, `/b`, and `/c` routes.

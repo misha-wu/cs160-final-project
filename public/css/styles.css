@@ -1,78 +1,129 @@
-* {
-  /* This directive changes every element's padding behavior. */
-  /* Widths will be *inclusive* of padding and borders, which makes them more predictable. */
-  box-sizing: border-box;
-}
-
 body {
-  /* These text styles will cascade through every child of the body, unless they are overridden. */
-  /* If Arial is not found, use the browser's fallback sans-serif font. */
-  font-family: Arial, sans-serif;
-  color: #000000;
-
   margin: 0;
   padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #252525;
 }
 
-.site-view {
-  /* This lets us arrange the child elements of the main view in a row. */
+.navbar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #252525;
 }
 
-nav {
-  /* The `flex` attribute controls the width of the column *relative* to other columns. */
-  /* Since the total `flex` attributes sum to 10, the nav will take up 20% of the horizontal width. */
-  flex: 2;
-
-  background-color: #ed2828;
-  text-align: center;
-  padding: 10px;
+.back-button {
+  text-decoration: none;
+  font-size: 40px;
+  color: white
 }
 
-/* Style all link tags within nav elements */
-nav a {
-  background-color: #28ed31;
-  padding: 8px;
-  margin-top: 7px;
-  display: block;
-  width: 100%;
+.menu-container {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: 'Reem Kufi Ink', sans-serif;
+  color: white;
+  animation: fadeIn 2s ease-in-out; 
+  animation-delay: 0.5s; 
+  visibility: hidden; 
+}
+
+.menu-container a {
+  display: inline-block;
+  padding: 5px 10px; 
+  margin: 0 10px; 
   color: black;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: #32FF77; 
+  border: 2px solid black; 
+  border-radius: 10px; 
+  transition: background-color 0.3s ease;
 }
 
-/* Makes sure affected elements don't exceed the bounds of their container. */
-/* Handy for images! */
-.responsive {
-  max-width: 100%;
-  max-height: 100%;
+.menu-container a:hover {
+  background-color: #26D662; /* Change color on hover */
 }
 
-/* This can be handy for centering content, but doesn't work if we don't set */
-/* the width of the element first. */
-/* Flexbox is a lot more, well, flexible! */
-.centered {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align to the top of the page */
+  height: 100vh;
+  display:none;
 }
 
-main {
-  background-color: #dd2118;
-  flex: 6;
-  padding: 0 20px;
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 20px;
 }
 
-footer {
-  background-color: #49cad2;
-  flex: 2;
-  padding: 15px;
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media only screen and (max-width: 720px) {
-  /* For mobile phones. Try resizing your browser window or using developer tools to trigger this responsive layout! */
-  .site-view {
-    /* The main sections are still in a Flexbox layout; this just changes the Flexbox configuration */
-    /* so that adjacent elements will render vertically instead of horizontally. */
-    flex-direction: column;
+.option {
+  width: 296px;
+  height: 90px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  border: 5px #32FF77 solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.option:hover {
+  background-color: #32FF77;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px); /* Animation from left to center */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Animation to center */
   }
 }
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px); /* Start off the screen to the right */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Move to the center */
+  }
+}
+
+
+
+
+
