@@ -1,6 +1,0 @@
-manga_ocr==0.1.11
-opencv_python==4.9.0.80
-Shapely==2.0.4
-torch==2.2.2
-torchsummary==1.5.1
-torchvision==0.17.2
