@@ -6,6 +6,10 @@ app = Flask(__name__)
 def hello_world():
     return render_template('aitranslator.html')
 
+@app.route("/info")
+def hi():
+    return render_template('hello.html', name="this is the name")
+
 if __name__ == '__main__':
     
     app.debug = True
