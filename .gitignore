@@ -1,2 +1,4 @@
 /public/flask_py/__pycache__
-/public/.venv/
+/public/.venv/ 
+/public/py/model
+.git/*
