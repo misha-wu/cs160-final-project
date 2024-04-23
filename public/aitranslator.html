@@ -11,17 +11,25 @@
 <body>
 
   <nav class="navbar">
-    <div class="title-container">
-      <div class="title" id="title"> <a href="#" class="back-button" onclick="window.history.back()">&#8249;</a> AI Translator
-    </div>
+      <div class="headline" id="title"> <a href="#" class="back-button" onclick="window.history.back()">&#8656</a> AI Translator
   </nav>
 
   <div class="container">
     <div class="options">
-      <div class="option">
-        translation words go here. image will come above. 
+      <div class="languageContainer">
+        <div class="language">Japanese</div>
+        <t3 style="font-size:24px; color:white; margin-left:20px; margin-right:20px;">→</t3>
+        <div class="language" style="background-color:#32FF77; border:3px solid white;">English</div>
       </div>
-      </label>
+    <div class = "picContainer" id="picContainer"></div>
+    <div class="translationContainer">
+      <div class ="spinnerContainer">
+        <! --this should be the spinner. I forgot how to include Bootstrap library*-->
+        <div style="background-color:#32FF77; width:36px; height:36px; border-radius:18px;"></div> 
+        <div class="systemMessage" style="color:white;">Processing...</div>
+      </div>
+    </div>
+    <div class ="bigButton"> Cancel Upload</div>
     </div>
     <div class="menu-container">
       <a href="\index.html">Home</a>
@@ -32,5 +40,48 @@
 
   <script src="script/script.js"></script>
 </body>
+
+<script>
+  function createDivFromJSON() {
+      // Get JSON message from the console
+      var jsonMessage = prompt("Enter JSON message:");
+      
+      try {
+          // Parse the JSON message
+          var jsonObj = JSON.parse(jsonMessage);
+          
+          // Extract values
+          var translatedText = jsonObj['translated text'];
+          var x = jsonObj['x'];
+          var y = jsonObj['y'];
+          var w = jsonObj['w'];
+          var h = jsonObj['h'];
+          
+          // Create a new div element
+          var div = document.createElement('div');
+          
+          // Set position and size
+          div.style.left = x + 'px';
+          div.style.top = y + 'px';
+          div.style.width = w + 'px';
+          div.style.height = h + 'px';
+          
+          // Add class for styling
+          div.classList.add('box');
+          
+          // Set text content
+          div.textContent = translatedText;
+          
+          // Append div to the body
+          document.getElementById('picContainer').appendChild(div);
+          
+      } catch (error) {
+          console.error('Error parsing JSON:', error);
+      }
+  }
+
+  // Call the function when the page loads
+  window.onload = createDivFromJSON;
+</script>
 
 </html>
