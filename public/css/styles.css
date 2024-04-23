@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -25,14 +28,20 @@ body {
 }
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 400;
   font-family: 'Reem Kufi Ink', sans-serif;
   color: white;
-  animation: fadeIn 2s ease-in-out; 
-  animation-delay: 0.5s; 
-  visibility: hidden; 
 }
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #32FF77;
+  margin-bottom: 20px;
+  
+}
+
 
 .menu-container a {
   display: inline-block;
@@ -62,12 +71,6 @@ body {
   display:none;
 }
 
-.subtitle {
-  font-size: 16px;
-  font-weight: 400;
-  color: white;
-  margin-bottom: 20px;
-}
 
 .headline{
   font-family: 'Noto Sans JP', sans-serif;
