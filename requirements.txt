@@ -1,6 +1,5 @@
 manga_ocr==0.1.11
-mokuro==0.2.0b7
 opencv_python==4.9.0.80
 Pillow==10.3.0
-
+pyclipper==1.3.0.post5
 Flask==3.0.3
