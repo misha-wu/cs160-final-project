@@ -2,3 +2,4 @@
 /public/.venv/ 
 /public/py/model
 .git/*
+**/.DS*

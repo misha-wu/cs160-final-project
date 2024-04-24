@@ -7,7 +7,7 @@ model_path = "comic-text-detector/data/comictextdetector.pt"
 max_ratio = 16
 
 def process_image(image_url):
-    img = cv2.imread(ls)
+    img = cv2.imread(image_url)
     mocr = MangaOcr()
 
     text_detector = TextDetector(model_path=model_path, input_size=1024, device='cpu', act='leaky')
