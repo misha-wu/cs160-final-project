@@ -1,3 +1,6 @@
 [submodule "public/py/comic-text-detector"]
 	path = public/py/comic_text_detector
 	url = https://github.com/misha-wu/comic-text-detector
+[submodule "public/flask_py/comic-text-detector"]
+	path = public/flask_py/comic_text_detector
+	url = git@github.com:misha-wu/comic-text-detector.git

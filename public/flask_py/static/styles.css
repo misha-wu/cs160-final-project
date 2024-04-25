@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #252525;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #252525;
+}
+
+.back-button {
+  text-decoration: none;
+  font-size: 32x;
+  color: #32FF77;
+}
+
+.menu-container {
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 400;
+  font-family: 'Reem Kufi Ink', sans-serif;
+  color: white;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #32FF77;
+  margin-bottom: 20px;
+  
+}
+
+
+.menu-container a {
+  display: inline-block;
+  padding: 5px 10px; 
+  margin: 0 10px; 
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: #32FF77; 
+  border: 2px solid black; 
+  border-radius: 10px; 
+  transition: background-color 0.3s ease;
+}
+
+.menu-container a:hover {
+  background-color: #26D662; /* Change color on hover */
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align to the top of the page */
+  height: 100vh;
+  display:none;
+}
+
+
+.headline{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  padding-left: 20px;
+  color: #32FF77;
+  background-color: #252525;
+  font-size: 18px;
+  line-height: 64px;
+}
+
+.languageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.language{
+  width:108px;
+  height: 24px;
+  padding: 10px;
+
+  font-family: 'Noto Sans JP', sans-serif;
+  border-radius: 12px;
+
+  background-color: #D9D9D9;
+  text-align: center;
+  line-height: 24px; 
+}
+
+.picContainer{
+  position: relative;
+  margin-top:16px;
+  width:100%;
+  height: 320px;
+  background-color: white;
+}
+
+.box {
+  font-family: 'Noto Sans JP', sans-serif;
+  position: absolute;
+  background-color: #32FF77;
+  padding: 5px;
+}
+
+.translationContainer{
+  margin-top:20px;
+  width:100%;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinnerContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.systemMessage{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  font-size:18px;
+  text-align: center;
+}
+
+.defContainer {
+  font-family: 'Noto Sans JP', sans-serif;
+  padding: 0px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.vocabulary{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size:36px;
+  color: white;
+}
+
+.voca-pron{
+  margin: 0;
+  margin-top:4px;
+  padding: 0;
+  font-style: italic;
+  font-weight: light;
+  font-size:16px;
+  color: #838383;
+}
+
+.voca-trans{
+  margin: 0;
+  margin-top: 12px;
+  padding: 0;
+  font-size:24px;
+  font-weight: medium;
+  color: white;  
+}
+
+.original{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size:16px;
+  color: white;
+}
+
+.pronunciation{
+  margin: 0;
+  margin-top: 4px;
+  padding: 0;
+  font-style: italic;
+  font-weight: light;
+  font-size:12px;
+  color: #838383;
+}
+
+.translation{
+  margin: 0;
+  margin-top: 16px;
+  padding: 0;
+  font-size:14px;
+  font-weight: medium;
+  color: white;  
+}
+
+
+.picContainer{
+  margin-top:16px;
+  width:100%;
+  height: 320px;
+  background-color: white;
+}
+
+.systemMessage{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  font-size:18px;
+  text-align: center;
+}
+
+.bigButton {
+  margin-top: 32px;
+border: 3px solid #32FF77;
+
+width: 200px;
+height: 32px;
+border-radius: 16px;
+
+font-family: 'Noto Sans JP', sans-serif;
+font-style: medium;
+font-size: 14px;
+color: #32FF77; /* Set the text color */
+text-align: center;
+line-height: 32px;
+
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option {
+  width: 296px;
+  height: 90px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  border: 5px #32FF77 solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.option:hover {
+  background-color: #32FF77;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px); /* Animation from left to center */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Animation to center */
+  }
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px); /* Start off the screen to the right */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Move to the center */
+  }
+}
+
+
+
+
+
