@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://www.w3schools.com/w3css/4/w3.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 body {
   margin: 0;
@@ -11,8 +13,9 @@ body {
 .navbar {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px;
   position: relative; /* Set position relative for the navbar */
+  height: 80px;
 }
 
 .back-button {
@@ -23,13 +26,16 @@ body {
   left: 20px; /* Align the back button to the left */
   top: 50%; /* Vertically center the back button */
   transform: translateY(-50%); /* Adjust vertical position */
+  border: 2px solid #32FF77;
+  padding:8px;
+  border-radius: 6px;
 }
 
 .headline {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Reem Kufi Ink', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   font-weight: bold;
   padding-left: 50px; /* Adjust padding to make space for the back button */
   color: #32FF77;
@@ -42,13 +48,18 @@ body {
 
 
 .menu-container {
+  width:100%;
+  height: 64px;
+  background: linear-gradient(to right, #32FF77, #1efffb); 
   margin-top: 20px; 
   display: flex;
   justify-content: center;
+  position: fixed; 
+  bottom: 0;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 400;
   font-family: 'Reem Kufi Ink', sans-serif;
   color: white;
@@ -60,7 +71,7 @@ body {
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #32FF77;
   margin-bottom: 20px;
@@ -79,8 +90,8 @@ body {
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
-  background-color: #32FF77; 
-  border: 2px solid black; 
+
+  /*border: 2px solid black;*/ 
   border-radius: 10px; 
   transition: background-color 0.3s ease;
 }
@@ -95,7 +106,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; /* Align to the top of the page */
-  height: 100vh;
 }
 
 
@@ -161,7 +171,8 @@ body {
 
 .defContainer {
   font-family: 'Noto Sans JP', sans-serif;
-  padding: 0px;
+  padding: 40px;
+  padding-top:12px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -174,7 +185,7 @@ body {
   margin: 0;
   padding: 0;
   font-weight: bold;
-  font-size:36px;
+  font-size:28px;
   color: white;
 }
 
@@ -184,15 +195,15 @@ body {
   padding: 0;
   font-style: italic;
   font-weight: light;
-  font-size:16px;
+  font-size:14px;
   color: #838383;
 }
 
 .voca-trans{
-  margin: 0;
+  /*margin: 0;*/
   margin-top: 12px;
   padding: 0;
-  font-size:24px;
+  font-size:20px;
   font-weight: medium;
   color: white;  
 }
@@ -263,18 +274,18 @@ body {
 
 .bigButton {
   margin-top: 32px;
-border: 3px solid #32FF77;
+  border: 3px solid #32FF77;
 
-width: 200px;
-height: 32px;
-border-radius: 16px;
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
 
-font-family: 'Noto Sans JP', sans-serif;
-font-style: medium;
-font-size: 14px;
-color: #32FF77; /* Set the text color */
-text-align: center;
-line-height: 32px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-style: medium;
+  font-size: 20px;
+  color: #32FF77; /* Set the text color */
+  text-align: center;
+  line-height: 34px;
 
 }
 
@@ -288,14 +299,14 @@ line-height: 32px;
   width: 296px;
   height: 90px;
   margin-bottom: 20px;
-  background: white;
-  border-radius: 20px;
+  background: #252525;
+  border-radius: 45px;
   border: 5px #32FF77 solid;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: black;
+  color: #32FF77;
   font-size: 20px;
   font-weight: 700;
   font-family: 'Noto Sans JP', sans-serif;

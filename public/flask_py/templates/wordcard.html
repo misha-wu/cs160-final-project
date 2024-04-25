@@ -37,23 +37,40 @@
     </div>
   </nav>
   {% block content %}
-  <div class="container">
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-    {% endblock %}
+
+  <div class="defContainer">
+    <p class="vocabulary">これ</p>
+    <p class="voca-pron">kore</p>
+    <p class="voca-trans">this</p>  
+    <p><span style="
+    color:black; 
+    background-color: #838383;
+    border-radius: 10px;
+    margin-top:120px;
+    margin-bottom:0px;
+    font-weight: light;
+    font-size:8px;
+    padding-top:2px;
+    padding-bottom:4px;
+    padding-left:8px;
+    padding-right:8px;"> Original Sentence </span></p>
+    <p class="original" style="
+    font-size:16px;
+    padding-top:0px;
+    margin-top:0px;
+    color:white;
+    font-weight:300;">これは契約だ</p>
+    <p class="pronunciation">Kore wa keiyakuda</p>
+    <p class="translation" style="margin-top:4px;color:white;font-weight:lighter;">This is the deal.</p>
+    
+  </div>
+  
+<div class = "picContainer"></div>
+
+<div  class="container"> <div class ="bigButton"> ⊗ Delete</div></div>
+
+
+{% endblock %}
   <script src="script/script.js"></script>
 </body>
 

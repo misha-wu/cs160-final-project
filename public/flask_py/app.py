@@ -10,9 +10,9 @@ def base():
 def word_bank():
     return render_template('wordbank.html')
 
-@app.route("/individualword")
-def individualword():
-    return render_template('individualword.html')
+@app.route("/wordcard")
+def wordcard():
+    return render_template('wordcard.html')
 
 @app.route("/aitranslator")
 def aitranslator():
