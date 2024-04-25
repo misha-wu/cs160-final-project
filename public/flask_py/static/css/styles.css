@@ -11,17 +11,35 @@ body {
 .navbar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-  background-color: #252525;
+  position: relative; /* Set position relative for the navbar */
 }
 
 .back-button {
   text-decoration: none;
-  font-size: 32x;
+  font-size: 28px;
   color: #32FF77;
+  position: absolute; /* Position the back button absolutely */
+  left: 20px; /* Align the back button to the left */
+  top: 50%; /* Vertically center the back button */
+  transform: translateY(-50%); /* Adjust vertical position */
 }
+
+.headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Reem Kufi Ink', sans-serif;
+  font-weight: bold;
+  padding-left: 50px; /* Adjust padding to make space for the back button */
+  color: #32FF77;
+  background-color: #252525;
+  font-size: 18px;
+  line-height: 64px;
+  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
+  text-align: center; /* Center the text within the title */
+}
+
 
 .menu-container {
   margin-top: 20px; 
@@ -34,6 +52,11 @@ body {
   font-weight: 400;
   font-family: 'Reem Kufi Ink', sans-serif;
   color: white;
+
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
+  text-align: center; /* Center the text within the title */
 }
 
 .subtitle {
@@ -41,7 +64,10 @@ body {
   font-weight: 400;
   color: #32FF77;
   margin-bottom: 20px;
-  
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
+  text-align: center; /* Center the text within the title */
 }
 
 
@@ -70,19 +96,10 @@ body {
   align-items: center;
   justify-content: flex-start; /* Align to the top of the page */
   height: 100vh;
-  display:none;
 }
 
 
-.headline{
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: bold;
-  padding-left: 20px;
-  color: #32FF77;
-  background-color: #252525;
-  font-size: 18px;
-  line-height: 64px;
-}
+
 
 .languageContainer {
   width: 100%;
@@ -151,6 +168,8 @@ body {
   justify-content: left;
 }
 
+
+
 .vocabulary{
   margin: 0;
   padding: 0;
@@ -178,12 +197,34 @@ body {
   color: white;  
 }
 
+.sentenceCard {
+  display: flex;
+  flex-direction: column;
+  gap:0px;
+
+  font-family: 'Noto Sans JP', sans-serif;
+  width: 80%;
+  /*height: 80px;*/
+  margin-bottom: 16px;
+  padding: 16px;
+
+
+  background-color: white;
+  color: black;
+  
+  border-radius: 12px;
+
+  border: 3px solid #32FF77; /* Fallback border color */
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  }
+
 .original{
   margin: 0;
   padding: 0;
   font-weight: bold;
-  font-size:16px;
-  color: white;
+  font-size:18px;
+  color: black;
 }
 
 .pronunciation{
@@ -202,7 +243,7 @@ body {
   padding: 0;
   font-size:14px;
   font-weight: medium;
-  color: white;  
+  color: black;  
 }
 
 

@@ -5,30 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MANGALINGUA</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
 <body>
 
   <nav class="navbar">
-    <div class="title-container">
-      <div class="headline" id="title"> <a href="#" class="back-button" onclick="window.history.back()">&#8249;</a> My Wordlist 
-    </div>
+    <div class="headline" id="title"> <a href="#" class="back-button" onclick="window.history.back()">&#8656;</a> My Word Bank </div>
   </nav>
-
+  {% block content %}
   <div class="container">
-    <div class="options">
-      <div class="option">
-        wordlists go here. need to add delete button too
-      </div>
-      </label>
-    </div>
+        <a class="sentenceCard" href="\individualword.html">
+          <p class="original">これ</p>
+          <p class="pronunciation">kore</p>
+          <p class="translation">this</p>
+        </a>
+  </div>
     <div class="menu-container">
       <a href="\index.html">Home</a>
       <a href="\aitranslator.html">AI translator</a>
     </div>
   </div>
-
+    {% endblock %}
   <script src="script/script.js"></script>
 </body>
 

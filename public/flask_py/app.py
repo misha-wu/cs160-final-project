@@ -10,6 +10,14 @@ def base():
 def word_bank():
     return render_template('wordbank.html')
 
+@app.route("/individualword")
+def individualword():
+    return render_template('individualword.html')
+
+@app.route("/aitranslator")
+def aitranslator():
+    return render_template('aitranslator.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
