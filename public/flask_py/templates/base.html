@@ -15,18 +15,15 @@
   </nav>
 
   <div class="container">
-    {% block content %}
-    <div class="options">
+    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
       <label for="fileInput" class="form-control">
         <div class="option">
           Upload New Photo
-          <input type="file" id="fileInput" class="form-control-file" style="display: none;" accept="image/*"
-            onchange="handleFileUpload(this)">
+          <input type="file" name="fileInput" id="fileInput" class="form-control-file" style="display: none;" accept="image/*" onchange="this.form.submit()">
         </div>
       </label>
-      <a href="{{ url_for('word_bank') }}" class="option">View My Word Bank</a>
-    </div>
-    {% endblock %}
+    </form>
+    <a href="{{ url_for('word_bank') }}" class="option">View My Word Bank</a>
   </div>
 
   <script src="{{ url_for('static', filename='script/script.js') }}"></script>

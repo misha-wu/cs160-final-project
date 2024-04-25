@@ -37,13 +37,16 @@ body {
   justify-content: center;
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bold;
-  padding-left: 50px; /* Adjust padding to make space for the back button */
+  padding-left: 50px;
+  /* Adjust padding to make space for the back button */
   color: #32FF77;
   background-color: #252525;
   font-size: 18px;
   line-height: 64px;
-  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
-  text-align: center; /* Center the text within the title */
+  flex-grow: 1;
+  /* Allow the title to grow and occupy remaining space */
+  text-align: center;
+  /* Center the text within the title */
 }
 
 
@@ -66,8 +69,10 @@ body {
 
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
-  text-align: center; /* Center the text within the title */
+  flex-grow: 1;
+  /* Allow the title to grow and occupy remaining space */
+  text-align: center;
+  /* Center the text within the title */
 }
 
 .subtitle {
@@ -77,15 +82,17 @@ body {
   margin-bottom: 20px;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Allow the title to grow and occupy remaining space */
-  text-align: center; /* Center the text within the title */
+  flex-grow: 1;
+  /* Allow the title to grow and occupy remaining space */
+  text-align: center;
+  /* Center the text within the title */
 }
 
 
 .menu-container a {
   display: inline-block;
-  padding: 5px 10px; 
-  margin: 0 10px; 
+  padding: 5px 10px;
+  margin: 0 10px;
   color: black;
   font-size: 18px;
   font-weight: 700;
@@ -97,7 +104,8 @@ body {
 }
 
 .menu-container a:hover {
-  background-color: #26D662; /* Change color on hover */
+  background-color: #26D662;
+  /* Change color on hover */
 }
 
 .container {
@@ -115,25 +123,35 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.language{
-  width:108px;
+
+.languageContainer .language {
+  width: 108px;
   height: 24px;
   padding: 10px;
-
   font-family: 'Noto Sans JP', sans-serif;
   border-radius: 12px;
-
-  background-color: #D9D9D9;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  background-color: white; /* Base color */
   text-align: center;
-  line-height: 24px; 
+  line-height: 24px;
+  border: 3px solid #32FF77; 
+  color: black;
 }
 
-.picContainer{
+.languageContainer .language:hover {
+  background-color: #D9D9D9; /* Light grey background on hover */
+}
+
+
+.picContainer {
   position: relative;
-  margin-top:16px;
-  width:100%;
+  margin-top: 16px;
+  width: 100%;
   height: 320px;
   background-color: white;
 }
@@ -145,9 +163,9 @@ body {
   padding: 5px;
 }
 
-.translationContainer{
-  margin-top:20px;
-  width:100%;
+.translationContainer {
+  margin-top: 20px;
+  width: 100%;
   height: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -155,17 +173,18 @@ body {
   justify-content: center;
 }
 
-.spinnerContainer{
+.spinnerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: pulse 2s infinite ease-in-out;
 }
 
-.systemMessage{
+.systemMessage {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bold;
-  font-size:18px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -181,7 +200,7 @@ body {
 
 
 
-.vocabulary{
+.vocabulary {
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -189,9 +208,9 @@ body {
   color: white;
 }
 
-.voca-pron{
+.voca-pron {
   margin: 0;
-  margin-top:4px;
+  margin-top: 4px;
   padding: 0;
   font-style: italic;
   font-weight: light;
@@ -205,13 +224,13 @@ body {
   padding: 0;
   font-size:20px;
   font-weight: medium;
-  color: white;  
+  color: white;
 }
 
 .sentenceCard {
   display: flex;
   flex-direction: column;
-  gap:0px;
+  gap: 0px;
 
   font-family: 'Noto Sans JP', sans-serif;
   width: 80%;
@@ -222,53 +241,54 @@ body {
 
   background-color: white;
   color: black;
-  
+
   border-radius: 12px;
 
-  border: 3px solid #32FF77; /* Fallback border color */
+  border: 3px solid #32FF77;
+  /* Fallback border color */
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
   text-decoration: none;
-  }
+}
 
-.original{
+.original {
   margin: 0;
   padding: 0;
   font-weight: bold;
-  font-size:18px;
+  font-size: 18px;
   color: black;
 }
 
-.pronunciation{
+.pronunciation {
   margin: 0;
   margin-top: 4px;
   padding: 0;
   font-style: italic;
   font-weight: light;
-  font-size:12px;
+  font-size: 12px;
   color: #838383;
 }
 
-.translation{
+.translation {
   margin: 0;
   margin-top: 16px;
   padding: 0;
-  font-size:14px;
+  font-size: 14px;
   font-weight: medium;
-  color: black;  
+  color: black;
 }
 
 
-.picContainer{
-  margin-top:16px;
-  width:100%;
+.picContainer {
+  margin-top: 16px;
+  width: 100%;
   height: 320px;
   background-color: white;
 }
 
-.systemMessage{
+.systemMessage {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: bold;
-  font-size:18px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -316,33 +336,46 @@ body {
 }
 
 .option:hover {
-  background-color: #32FF77;
+  background-color: #26D662;
   color: #ffffff;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(-20px); /* Animation from left to center */
+    transform: translateX(-20px);
+    /* Animation from left to center */
   }
+
   to {
     opacity: 1;
-    transform: translateX(0); /* Animation to center */
+    transform: translateX(0);
+    /* Animation to center */
   }
 }
 
 @keyframes fadeInFromRight {
   from {
     opacity: 0;
-    transform: translateX(20px); /* Start off the screen to the right */
+    transform: translateX(20px);
+    /* Start off the screen to the right */
   }
+
   to {
     opacity: 1;
-    transform: translateX(0); /* Move to the center */
+    transform: translateX(0);
+    /* Move to the center */
   }
 }
 
-
-
-
-
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2); /* Increase the scale to make it larger */
+  }
+  100% {
+      transform: scale(1);
+  }
+}
