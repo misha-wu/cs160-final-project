@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Translator{% endblock %}
+
+{% block content %}
+  <div class="options">
+    <label for="fileInput" class="form-control">
+      <div class="option">
+        Upload New Photo
+        <input type="file" id="fileInput" class="form-control-file" style="display: none;" accept="image/*"
+          onchange="handleFileUpload(this)">
+      </div>
+    </label>
+    <a href="wordlist.html" class="option">View My Word Bank</a>
+  </div>
+{% endblock %}

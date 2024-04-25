@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}MANGALINGUA{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="title-container">
+      <div class="title" id="title">✑ MANGALINGUA 。</div>
+      <div class="subtitle">Your Personal AI Manga Translator</div>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block content %}
+    <div class="options">
+      <label for="fileInput" class="form-control">
+        <div class="option">
+          Upload New Photo
+          <input type="file" id="fileInput" class="form-control-file" style="display: none;" accept="image/*"
+            onchange="handleFileUpload(this)">
+        </div>
+      </label>
+      <a href="{{ url_for('word_bank') }}" class="option">View My Word Bank</a>
+    </div>
+    {% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+</html>
