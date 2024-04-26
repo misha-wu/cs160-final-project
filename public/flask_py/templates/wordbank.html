@@ -14,30 +14,15 @@
     <div class="title-container">
       <div class="headline" id="title">
 
-        <i class="fa fa-chevron-left" style="
-        position: absolute;
-        left: 20px; 
-        top: 50%; 
-        transform: translateY(-50%);
-        border: 2px solid #32FF77;
-        padding:8px;
-        padding-right:10px;
-        border-radius: 6px;"
+        <i class="fa fa-chevron-left navButton" style="left: 20px;"
         onclick="window.history.back()"></i> 
         
-        <a href="/" style="text-decoration: none;"><i class="fa fa-home" style="
-        position: absolute;
-        right: 20px; 
-        top: 50%; 
-        transform: translateY(-50%);
-        border: 2px solid #32FF77;
-        padding:8px;
-        border-radius: 6px;"
+        <a href="/" style="text-decoration: none;"><i class="fa fa-home  navButton" style="right: 20px;"
         ></i> </a>
     </div>
   </nav>
   {% block content %}
-  <div class="container">
+  <div class="contentContainer">
         <a class="sentenceCard" href="\wordcard">
           <p class="original">これ</p>
           <p class="pronunciation">kore</p>

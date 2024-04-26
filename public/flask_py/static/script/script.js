@@ -1,3 +1,6 @@
+document.querySelector('.spinnerContainer').style.display = 'none';
+document.getElementById('translationContainer').style.display = 'none';
+
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector(".container");
     const title = document.querySelector(".title");
@@ -41,15 +44,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 function translateText() {
-    // Simulate translation process
+    // Show spinnerContainer when the manga detector is processing
+    document.querySelector('.spinnerContainer').style.display = 'block';
+
+    // Charon: please change this interaction to show after the translation is completed
     const processId = setTimeout(function () {
         const systemMessage = document.querySelector(".systemMessage");
-        systemMessage.textContent = "Translation complete!"; // Update message after "processing"
-    }, 5000); // Adjust time as needed for your use case
 
-    // Store the timeout ID in a global variable for cancellation
+        document.querySelector('.spinnerContainer').style.display = 'none';
+
+        setTimeout(function () {
+            document.getElementById('translationContainer').style.display = 'block'; //Charon: please also insert the japanese & translation to the sentence card
+            createDivFromInput('Hello,56,68,48,129'); //Charon: please replace the content with the right text and coordinations!
+            document.getElementById('cancelButton').style.display = 'none';
+        }, 10);
+    }, 1500); 
+
     window.processTimeout = processId;
+}
+
+function createDivFromInput(input) {
+    try {
+        // Extract values from input string
+        var values = input.split(',');
+
+        // Extract values
+        var translatedText = values[0].trim(); // Trim any leading or trailing spaces
+        var x = parseInt(values[1].trim()); // Parse x coordinate as integer
+        var y = parseInt(values[2].trim()); // Parse y coordinate as integer
+        var w = parseInt(values[3].trim()); // Parse width as integer
+        var h = parseInt(values[4].trim()); // Parse height as integer
+
+        // Create a new div element
+        var div = document.createElement('div');
+
+        // Set position and size
+        div.style.position = 'absolute'; // Set position to absolute
+        div.style.left = x + 'px';
+        div.style.top = y + 'px';
+        div.style.width = w + 'px';
+        div.style.height = h + 'px';
+
+        // Add class for styling
+        div.classList.add('box');
+
+        // Set text content
+        div.textContent = translatedText;
+
+        // Append div to the body
+        document.getElementById('picContainer').appendChild(div);
+        
+    } catch (error) {
+        console.error('Error creating div:', error);
+    }
 }
 
 function stopProcessing() {
