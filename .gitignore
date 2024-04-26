@@ -1,5 +1,6 @@
 /public/flask_py/__pycache__
-/public/.venv/ 
+/public/flask_py/.venv/
 /public/py/model
 .git/*
 **/.DS*
+**/*.pyc
