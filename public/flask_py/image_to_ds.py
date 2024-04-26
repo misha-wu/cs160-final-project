@@ -2,6 +2,7 @@
 # sys.path.append('/.venv/lib/python3.9/site-packages')
 import cv2 as cv2
 import requests
+from requests.exceptions import HTTPError
 import numpy as np
 import base64
 from comic_text_detector.inference import TextDetector
@@ -46,27 +47,48 @@ def text_ocr_to_dictionary(image_bytes):
           'keywords': []
         }
       )
-  print(text_info)
+  # print(text_info)
   return text_info
 
 # populate the translation and keywords fields in text_info
 # input: text_info is a list of dictionaries, see text_ocr_to_dictionary() comment for information
 # output: none; populate text_info in place
 def populate_translation_keywords(text_info):
+  print("calling reagent...")
+  # all_romaji = ''
   for entry in text_info:
     raw_text = entry['text']
-    response = requests.post(
-      'https://noggin.rea.gent/indirect-wildebeest-3510',
-      headers={
-        'Authorization': 'Bearer rg_v1_iak4969oyfp6gnfrbzjgot2zaq6v717w5q2f_ngk',
-        'Content-Type': 'application/json',
-      },
-      json={
-        # fill variables here.
-        'sentence': raw_text,
-      }
-    ).text
-    print(response)
+    try:
+      response = requests.post(
+        'https://noggin.rea.gent/indirect-wildebeest-3510',
+        headers={
+          'Authorization': 'Bearer rg_v1_iak4969oyfp6gnfrbzjgot2zaq6v717w5q2f_ngk',
+          'Content-Type': 'application/json',
+        },
+        json={
+          # fill variables here.
+          'sentence': raw_text,
+        }
+      )
+      response.raise_for_status()
+      response_dict = response.json()
+      # response_dict = json.loads(raw_response)
+      # validation checking
+      if "translation" in response_dict:
+        entry['translation'] = response_dict['translation']
+      else:
+        entry['translation'] = 'ERROR'
+      
+      if 'phrases' in response_dict:
+        entry['keywords'] = response_dict['phrases']
+      
+      if 'romaji' in response_dict:
+        entry['romaji'] = response_dict['romaji']
+    except HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except Exception as err:
+        print(f"Other error occurred: {err}")
+
   return text_info
 
 # testing only, remove later
@@ -75,4 +97,5 @@ if __name__ == "__main__":
     encoded_string = base64.b64encode(image_file.read())
   # image = cv2.imencode(cv2.imread("test_imgs/better.png"))
     infos = text_ocr_to_dictionary(encoded_string)
-    populate_translation_keywords(infos)
+    infos = populate_translation_keywords(infos)
+    print(infos)
