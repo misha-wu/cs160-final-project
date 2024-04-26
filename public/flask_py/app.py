@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
+from image_util import allowed_file, parse_image
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_folder='static')
@@ -32,20 +33,29 @@ def aitranslator(filename):
         image_url = None
     return render_template('aitranslator.html', filename=image_url)
 
-@app.route("/upload", methods=['POST'])
+#TODO implement template and change
+# referencing flask documentation for file uploads
+@app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'fileInput' not in request.files:
+    # check if the post request has the file part
+    if 'image' not in request.files:
         flash('No file part')
-        return redirect(request.url)
-    file = request.files['fileInput']
+        return redirect(url_for('/'))
+    file = request.files['image']
     if file.filename == '':
         flash('No selected file')
-        return redirect(request.url)
-    if file:
-        filename = secure_filename(file.filename)
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(filepath)
-        return redirect(url_for('aitranslator', filename=filename))
+        return redirect(url_for('/'))
+    if file and allowed_file(file.filename):
+        image = request.files['image']  
+        
+        # get populated dictionary
+        image_info = parse_image(image)
+
+        #TODO use real template link here
+        return render_template('FIXME.html', image_info=image_info)    
+    else:
+        flash('Invalid File Type')
+        return redirect(url_for('/'))
 
 if __name__ == '__main__':
     app.run(debug=True)
