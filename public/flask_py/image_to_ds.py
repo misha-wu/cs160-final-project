@@ -1,13 +1,14 @@
 # import sys
 # sys.path.append('/.venv/lib/python3.9/site-packages')
 import cv2 as cv2
+import requests
 import numpy as np
 import base64
 from comic_text_detector.inference import TextDetector
 from manga_ocr import MangaOcr
 
 import PIL.Image as Image
-model_path = "model/comictextdetector.pt"
+model_path = "../data/model/comictextdetector.pt"
 max_ratio = 16
 
 
@@ -41,6 +42,7 @@ def text_ocr_to_dictionary(image_bytes):
           'y': y,
           'w': w,
           'h': h,
+          'romaji': '',
           'keywords': []
         }
       )
@@ -51,11 +53,26 @@ def text_ocr_to_dictionary(image_bytes):
 # input: text_info is a list of dictionaries, see text_ocr_to_dictionary() comment for information
 # output: none; populate text_info in place
 def populate_translation_keywords(text_info):
-  #TODO
-  #YUHAN CODE HERE
-  return
+  for entry in text_info:
+    raw_text = entry['text']
+    response = requests.post(
+      'https://noggin.rea.gent/indirect-wildebeest-3510',
+      headers={
+        'Authorization': 'Bearer rg_v1_iak4969oyfp6gnfrbzjgot2zaq6v717w5q2f_ngk',
+        'Content-Type': 'application/json',
+      },
+      json={
+        # fill variables here.
+        'sentence': raw_text,
+      }
+    ).text
+    print(response)
+  return text_info
 
 # testing only, remove later
 if __name__ == "__main__":
-  image = cv2.imencode(cv2.imread("test_imgs/better.png"))
-  text_ocr_to_dictionary(image)
+  with open("../data/test_imgs/better.png", "rb") as image_file:
+    encoded_string = base64.b64encode(image_file.read())
+  # image = cv2.imencode(cv2.imread("test_imgs/better.png"))
+    infos = text_ocr_to_dictionary(encoded_string)
+    populate_translation_keywords(infos)
