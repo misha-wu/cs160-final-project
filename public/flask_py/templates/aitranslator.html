@@ -46,16 +46,15 @@
 
   <script src="{{ url_for('static', filename='script/script.js') }}"></script>
 </body>
-
-<script>
+<script type="text/javascript">
 
 document.querySelector('.spinnerContainer').style.display = 'none';
 document.getElementById('translationContainer').style.display = 'none';
 
 
 setTimeout(function() {
-  let parsed = [];
-  translateText(parsed);
+  let json_str = ({{word_dict|tojson}});
+  translateText(JSON.parse(json_str));
 }, 100);
 
 

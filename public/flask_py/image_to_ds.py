@@ -20,6 +20,7 @@ def text_ocr_to_dictionary(image_bytes):
   # given a bytestring, convert to np, then decode into cv2 format
   img_as_np = np.frombuffer(base64.b64decode(image_bytes), np.uint8)
   img = cv2.imdecode(img_as_np, cv2.IMREAD_COLOR)
+  img_h, img_w, _ = img.shape
   mocr = MangaOcr()
 
   text_detector = TextDetector(model_path=model_path, input_size=1024, device='cpu', act='leaky')
@@ -39,10 +40,10 @@ def text_ocr_to_dictionary(image_bytes):
         {
           'text': line_text,
           'translation': '',
-          'x': x,
-          'y': y,
-          'w': w,
-          'h': h,
+          'x': str(x*100/img_w),
+          'y': str(y*100/img_h),
+          'w': str(w*100/img_w),
+          'h': str(h*100/img_h),
           'romaji': '',
           'keywords': []
         }
@@ -95,7 +96,6 @@ def populate_translation_keywords(text_info):
 if __name__ == "__main__":
   with open("../data/test_imgs/better.png", "rb") as image_file:
     encoded_string = base64.b64encode(image_file.read())
-  # image = cv2.imencode(cv2.imread("test_imgs/better.png"))
     infos = text_ocr_to_dictionary(encoded_string)
     infos = populate_translation_keywords(infos)
     print(infos)

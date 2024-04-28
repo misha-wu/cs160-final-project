@@ -20,7 +20,7 @@
       <label for="fileInput" class="form-control">
         <div class="option" style="margin-top:40px;">
           Upload New Photo
-          <input type="file" name="fileInput" id="fileInput" class="form-control-file" style="display: none;" accept="image/*" onchange="this.form.submit()">
+          <input type="file" name="fileInput" id="fileInput" class="form-control-file" style="display: none;" accept="image/*" onchange="return submitForm(this.form);">
         </div>
       </label>
     </form>
