@@ -54,16 +54,14 @@ document.getElementById('translationContainer').style.display = 'none';
 
 
 setTimeout(function() {
-    translateText();
+  let parsed = [];
+  translateText(parsed);
 }, 100);
 
 
   function cancelUpload() {
     window.location.href = '{{ url_for("base") }}';
   }
-
-
-
 
 </script>
 

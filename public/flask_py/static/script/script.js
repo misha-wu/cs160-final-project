@@ -44,11 +44,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function translateText(word_dict) {
+  // Show spinnerContainer when the manga detector is processing
+  document.querySelector('.spinnerContainer').style.display = 'block';
+
+  // Charon: please change this interaction to show after the translation is completed
+  const processId = setTimeout(function () {
+      const systemMessage = document.querySelector(".systemMessage");
+      systemMessage.innerText = "loading";
+      document.querySelector('.spinnerContainer').style.display = 'none';
+
+      setTimeout(function () {
+          document.getElementById('translationContainer').style.display = 'block'; //Charon: please also insert the japanese & translation to the sentence card
+          
+          createDivFromInput('Hello,56,68,48,129'); //Charon: please replace the content with the right text and coordinations!
+          document.getElementById('cancelButton').style.display = 'none';
+      }, 10);
+  }, 1500); 
+
+  window.processTimeout = processId;
+}
+
 
 function translateText() {
     // Show spinnerContainer when the manga detector is processing
     document.querySelector('.spinnerContainer').style.display = 'block';
-
+    console.log("Get here");
     // Charon: please change this interaction to show after the translation is completed
     const processId = setTimeout(function () {
         const systemMessage = document.querySelector(".systemMessage");
@@ -67,6 +88,7 @@ function translateText() {
 
 function createDivFromInput(input) {
     try {
+        console.log(input);
         // Extract values from input string
         var values = input.split(',');
 
@@ -122,4 +144,23 @@ function handleFileUpload(input) {
         reader.readAsDataURL(file);
     }
 }
+
+function submitForm(formElement) {
+    console.log(formElement);
+    formElement.submit();
+    fetch('/upload',  {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formElement)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Use the fetched data
+        console.log(data);
+        document.getElementById('data').innerText = JSON.stringify(data);
+    })
+    .catch(error => console.error('Error fetching data:', error));
+  }
 
