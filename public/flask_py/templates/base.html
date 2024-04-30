@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}MANGALINGUA{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
   <nav class="navbar">
     <div class="title-container">
       <div class="title" id="title">✑ MANGALINGUA</div>
-
     </div>
   </nav>
 
   <div class="contentContainer">
     <div class="subtitle">AI Manga Translator & Japanese Learning Buddy</div>
+
+    <!-- Spinner Container -->
+    <div class="spinnerContainer" style="display: block;">
+      <div class="spinner"></div>
+      <div class="spinnerText">Processing Image... Please wait</div>
+    </div>
+
+    <!-- Form for uploading files -->
     <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
       <label for="fileInput" class="form-control">
         <div class="option" style="margin-top:40px;">
           Upload New Photo
-          <input type="file" name="fileInput" id="fileInput" class="form-control-file" style="display: none;" accept="image/*" onchange="return submitForm(this.form);">
+          <input type="file" name="fileInput" id="fileInput" class="form-control-file" style="display: none;"
+            accept="image/*" onchange="return submitForm(this.form);">
         </div>
       </label>
     </form>
+
     <a href="{{ url_for('word_bank') }}" class="option">View My Word Bank</a>
   </div>
+
   <script src="{{ url_for('static', filename='script/script.js') }}"></script>
 </body>
+
 </html>

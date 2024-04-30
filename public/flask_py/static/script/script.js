@@ -30,106 +30,108 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         title.style.visibility = "visible";
     }, 500); // Delay in milliseconds, matches animation delay
-
-    // Event listener for English button
-    englishBtn.addEventListener("click", function() {
-        translationContainer.style.display = 'block'; // Show the processing animation
-        translateText(); // Assuming translateText() is the function to start the translation process
-    });
-
-    // Event listener for Japanese button (optional functionality)
-    japaneseBtn.addEventListener("click", function() {
-        // Optional: Code to handle when Japanese is selected, if needed
-        alert("Japanese selected"); // For example purposes, replace with your actual function
-    });
 });
 
-function translateText(word_dict) {
-  // Show spinnerContainer when the manga detector is processing
-  document.querySelector('.spinnerContainer').style.display = 'block';
+function submitForm(formElement) {
+    var spinnerContainer = document.querySelector('.spinnerContainer');
+    spinnerContainer.style.display = 'block'; // Show the spinner container immediately upon form submission
 
-  // Charon: please change this interaction to show after the translation is completed
-  const processId = setTimeout(function () {
-      const systemMessage = document.querySelector(".systemMessage");
-      systemMessage.innerText = "loading";
-      document.querySelector('.spinnerContainer').style.display = 'none';
+    formElement.submit();
 
-      setTimeout(function () {
-          document.getElementById('translationContainer').style.display = 'block'; //Charon: please also insert the japanese & translation to the sentence card
-          
-          createDivFromInput('Hello,56,68,48,129'); //Charon: please replace the content with the right text and coordinations!
-          document.getElementById('cancelButton').style.display = 'none';
-      }, 10);
-  }, 1500); 
-
-  window.processTimeout = processId;
+    fetch('/upload', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formElement)
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Use the fetched data
+            console.log(data);
+            document.getElementById('data').innerText = JSON.stringify(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
 
-
-function translateText() {
-    // Show spinnerContainer when the manga detector is processing
-    document.querySelector('.spinnerContainer').style.display = 'block';
-    console.log("Get here");
-    // Charon: please change this interaction to show after the translation is completed
+function translateText(word_dict) {
     const processId = setTimeout(function () {
-        const systemMessage = document.querySelector(".systemMessage");
+        document.getElementById('translationContainer').style.display = 'block'; // Display the translation container
+        word_dict.forEach(block => { // Ensure this loop iterates over all blocks
+            createDivFromInput(block);
+        });
+    }, 1500);
 
-        document.querySelector('.spinnerContainer').style.display = 'none';
+    window.processTimeout = processId; // Store the timeout ID for potential future use
+}
 
-        setTimeout(function () {
-            document.getElementById('translationContainer').style.display = 'block'; //Charon: please also insert the japanese & translation to the sentence card
-            createDivFromInput('Hello,56,68,48,129'); //Charon: please replace the content with the right text and coordinations!
-            document.getElementById('cancelButton').style.display = 'none';
-        }, 10);
-    }, 1500); 
+function adjustFontSize(div) {
+    var maxFontSize = 16;  // Maximum font size in pixels
+    var minFontSize = 10;  // Minimum font size in pixels
+    var scalingFactor = 100;  // Adjust this based on needs
+    var contentLength = div.textContent.length;
 
-    window.processTimeout = processId;
+    var idealFontSize = Math.max(minFontSize, maxFontSize - (contentLength / scalingFactor));
+    div.style.fontSize = idealFontSize + 'px';
 }
 
 function createDivFromInput(input) {
     try {
-        console.log(input);
-        // Extract values from input string
-        var values = input.split(',');
+        var container = document.getElementById('picContainer');  // Reference to the picContainer
+        var rect = container.getBoundingClientRect();  // Get dimensions of the picContainer
 
-        // Extract values
-        var translatedText = values[0].trim(); // Trim any leading or trailing spaces
-        var x = parseInt(values[1].trim()); // Parse x coordinate as integer
-        var y = parseInt(values[2].trim()); // Parse y coordinate as integer
-        var w = parseInt(values[3].trim()); // Parse width as integer
-        var h = parseInt(values[4].trim()); // Parse height as integer
-
-        // Create a new div element
+        // Create a new div element for the translated text and set its properties
         var div = document.createElement('div');
-
-        // Set position and size
-        div.style.position = 'absolute'; // Set position to absolute
-        div.style.left = x + 'px';
-        div.style.top = y + 'px';
-        div.style.width = w + 'px';
-        div.style.height = h + 'px';
-
-        // Add class for styling
+        div.style.position = 'absolute';
+        div.style.left = (input.x / 100 * rect.width) + 'px';  // Convert percentage to pixels
+        div.style.top = (input.y / 100 * rect.height) + 'px';
+        div.style.width = (input.w / 100 * rect.width) + 'px';
+        div.style.height = (input.h / 100 * rect.height) + 'px';
         div.classList.add('box');
+        div.textContent = input.translation; // Use translation as the text content
+        container.appendChild(div);  // Append the div to the picContainer
 
-        // Set text content
-        div.textContent = translatedText;
+        adjustFontSize(div);  // Assuming adjustFontSize is defined correctly elsewhere
 
-        // Append div to the body
-        document.getElementById('picContainer').appendChild(div);
-        
+        // Create sentence cards for each keyword
+        createKeywordCards(input.keywords, true);
     } catch (error) {
         console.error('Error creating div:', error);
     }
 }
 
-function stopProcessing() {
-    clearTimeout(window.processTimeout); // Stop the simulated processing
-    const translationContainer = document.getElementById('translationContainer');
-    translationContainer.style.display = 'none'; // Hide the processing animation
-    const systemMessage = document.querySelector(".systemMessage");
-    systemMessage.textContent = "Processing canceled."; // Optional feedback message
+
+function createKeywordCards(keywords, append = false) {
+    const container = document.getElementById('translationContainer');
+    if (!append) {
+        container.innerHTML = ''; // Clear only if not appending
+    }
+
+    keywords.forEach(kw => {
+        let card = document.createElement('div');
+        card.classList.add('sentenceCard');
+
+        let original = document.createElement('p');
+        original.classList.add('original');
+        original.textContent = kw.phrase;
+
+        let pronunciation = document.createElement('p');
+        pronunciation.classList.add('pronunciation');
+        pronunciation.textContent = kw.romaji;
+
+        let translation = document.createElement('p');
+        translation.classList.add('translation');
+        translation.textContent = kw.english;
+
+        card.appendChild(original);
+        card.appendChild(pronunciation);
+        card.appendChild(translation);
+
+        container.appendChild(card);
+    });
 }
+
+
 
 function handleFileUpload(input) {
     const file = input.files[0];
@@ -145,22 +147,5 @@ function handleFileUpload(input) {
     }
 }
 
-function submitForm(formElement) {
-    console.log(formElement);
-    formElement.submit();
-    fetch('/upload',  {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formElement)
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Use the fetched data
-        console.log(data);
-        document.getElementById('data').innerText = JSON.stringify(data);
-    })
-    .catch(error => console.error('Error fetching data:', error));
-  }
+
 

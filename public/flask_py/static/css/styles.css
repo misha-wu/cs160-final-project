@@ -176,6 +176,15 @@ body {
   background-color: #32FF77;
   padding: 5px;
   z-index: 9999;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .box {
+      padding: 3px;  // Reduce padding on smaller screens
+      font-size: 14px;  // Smaller text to fit more content
+  }
 }
 
 .translationContainer {
@@ -204,6 +213,13 @@ body {
   height: 36px;
   border-radius: 18px;
   animation: pulse 1s infinite ease-in-out;
+}
+
+.spinnerText {
+  text-align: center;
+  margin-top: 10px; /* Adjust as needed */
+  color: #32FF77; /* Adjust text color */
+  font-size: 20px; /* Adjust font size */
 }
 
 .systemMessage {
