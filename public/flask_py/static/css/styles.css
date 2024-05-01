@@ -32,19 +32,6 @@ body {
   box-shadow:2px 2px black;
 }
 
-.back-button {
-  text-decoration: none;
-  font-size: 28px;
-  color: #000000;
-  position: absolute; /* Position the back button absolutely */
-  left: 20px; /* Align the back button to the left */
-  top: 50%; /* Vertically center the back button */
-  transform: translateY(-50%); /* Adjust vertical position */
-  border: 2px solid #000000;
-  padding:8px;
-  border-radius: 6px;
-}
-
 .headline {
   display: flex;
   align-items: center;
@@ -134,8 +121,6 @@ body {
 }
 
 
-
-
 .languageContainer {
   width: 100%;
   display: flex;
@@ -152,7 +137,7 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   border-radius: 12px;
   cursor: pointer; 
-  /*transition: background-color 0.3s ease; */
+
   background-color: white; /* Base color */
   text-align: center;
   line-height: 24px;
@@ -182,6 +167,37 @@ body {
   width: auto; /* Allow the width to adjust automatically */
   height: auto; /* Allow the height to adjust automatically */
 }
+
+.saveButton {
+  padding: 4px 10px; 
+  font-size: 14px; 
+  color: black;
+  background-color: #32FF77;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  margin-top: 10px;
+}
+.saveButton i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.deleteButton {
+  padding: 4px 10px; 
+  font-size: 14px; 
+  color: black;
+  background-color: #32FF77;
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.deleteButton i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+
 
 .box {
   font-family: 'Noto Sans JP', sans-serif;
@@ -221,7 +237,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%+36px, -50%+36px);
-  background-color: #32FF77;
+  background-color: black;
   width: 36px;
   height: 36px;
   border-radius: 18px;
@@ -230,9 +246,10 @@ body {
 
 .spinnerText {
   text-align: center;
-  margin-top: 10px; /* Adjust as needed */
-  color: #32FF77; /* Adjust text color */
-  font-size: 20px; /* Adjust font size */
+  margin-top: 10px; 
+  color: black; 
+  font-size: 20px; 
+  animation: pulse 5s infinite ease-in-out;
 }
 
 .systemMessage {

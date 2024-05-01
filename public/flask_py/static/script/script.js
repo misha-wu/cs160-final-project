@@ -132,13 +132,39 @@ function createKeywordCards(keywords, append = false) {
         translation.classList.add('translation');
         translation.textContent = kw.english;
 
+        // Create Save button
+        let saveButton = document.createElement('button');
+        saveButton.classList.add('saveButton');
+        saveButton.innerHTML = `<i class="fa fa-save"></i> Save`;
+        saveButton.onclick = function() {
+            saveTranslation(kw);
+        };
+
         card.appendChild(original);
         card.appendChild(pronunciation);
         card.appendChild(translation);
+        card.appendChild(saveButton); // Append the Save button to the card
 
         container.appendChild(card);
     });
 }
+
+function saveTranslation(keyword) {
+    let savedCards = JSON.parse(localStorage.getItem('savedSentenceCards')) || [];
+    savedCards.push(keyword);
+    localStorage.setItem('savedSentenceCards', JSON.stringify(savedCards));
+    
+    showModal(); // Show the modal instead of using alert
+}
+
+function showModal() {
+    document.getElementById('saveModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('saveModal').style.display = 'none';
+}
+
 
 
 

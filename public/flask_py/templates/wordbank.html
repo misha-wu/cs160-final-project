@@ -1,45 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MANGALINGUA</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <!-- Ensure FontAwesome is included if used for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
 <body>
 
   <nav class="navbar">
     <div class="title-container">
+      <div class="title" id="title">WORD BANK</div>
       <div class="headline" id="title">
-
-        <i class="fa fa-chevron-left navButton" style="left: 20px;"
-        onclick="window.history.back()"></i> 
-        
-        <a href="/" style="text-decoration: none;"><i class="fa fa-home  navButton" style="right: 20px;"
-        ></i> </a>
+        <i class="fa fa-chevron-left navButton" style="left: 20px;" onclick="window.history.back();"></i>
+        <a href="/" style="text-decoration: none;"><i class="fa fa-home navButton" style="right: 20px;"></i></a>
+        <!-- <a href="{{ url_for('upload_file') }}" style="text-decoration: none;"><i class="fa fa-archive navButton" style="right: 20px;" title="Word Bank"></i></a> -->
+      </div>
     </div>
   </nav>
-  {% block content %}
-  <div class="contentContainer">
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-        <a class="sentenceCard" href="\wordcard">
-          <p class="original">これ</p>
-          <p class="pronunciation">kore</p>
-          <p class="translation">this</p>
-        </a>
-    {% endblock %}
-  <script src="script/script.js"></script>
-</body>
 
+  <div class="contentContainer">
+    <div class="subtitle">Your saved words and phrases will appear here!</div>
+  
+
+  <div class="contentContainer" id="contentContainer">
+    <!-- dynamic content will be loaded here -->
+  </div>
+
+  <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+  <script>
+    window.onload = function () {
+        const container = document.getElementById('contentContainer');
+        const savedCards = JSON.parse(localStorage.getItem('savedSentenceCards')) || [];
+    
+        savedCards.forEach((card, index) => {
+            let div = document.createElement('div');
+            div.classList.add('sentenceCard');
+            div.setAttribute('data-index', index);
+    
+            let original = document.createElement('p');
+            original.classList.add('original');
+            original.textContent = card.phrase;
+    
+            let pronunciation = document.createElement('p');
+            pronunciation.classList.add('pronunciation');
+            pronunciation.textContent = card.romaji;
+    
+            let translation = document.createElement('p');
+            translation.classList.add('translation');
+            translation.textContent = card.english;
+    
+            // Create Delete button
+            let deleteButton = document.createElement('button');
+            deleteButton.classList.add('deleteButton');
+            deleteButton.innerHTML = `<i class="fa fa-trash"></i> Delete`;
+            deleteButton.onclick = function() {
+                deleteCard(index);
+            };
+    
+            div.appendChild(original);
+            div.appendChild(pronunciation);
+            div.appendChild(translation);
+            div.appendChild(deleteButton);
+    
+            container.appendChild(div);
+        });
+    }
+    
+    function deleteCard(index) {
+        let savedCards = JSON.parse(localStorage.getItem('savedSentenceCards')) || [];
+        savedCards.splice(index, 1); // Remove the item at the specified index
+        localStorage.setItem('savedSentenceCards', JSON.stringify(savedCards)); // Update localStorage
+        window.location.reload(); // Reload the page to update the UI
+    }
+    </script>
+    
+</body>
 </html>
