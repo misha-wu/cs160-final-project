@@ -80,16 +80,25 @@ function createDivFromInput(input) {
         var container = document.getElementById('picContainer');  // Reference to the picContainer
         var rect = container.getBoundingClientRect();  // Get dimensions of the picContainer
 
+        // Get the image element
+        var img = document.querySelector('.picContainer img');
+
+        // Wait for the image to load
+        img.onload = function() {
+            // Get the width and height of the image
+            var width = img.width;
+        };
+
         // Create a new div element for the translated text and set its properties
         var div = document.createElement('div');
         div.style.position = 'absolute';
-        div.style.left = (input.x / 100 * rect.width) + 'px';  // Convert percentage to pixels
-        div.style.top = (input.y / 100 * rect.height) + 'px';
-        div.style.width = (input.w / 100 * rect.width) + 'px';
-        div.style.height = (input.h / 100 * rect.height) + 'px';
+        div.style.left = (input.x / 100 * img.width + (input.w / 100 * img.width)) + 'px';  // Convert percentage to pixels
+        div.style.top = ((input.y / 100 * 320)+80) + 'px';
+        div.style.width = ((input.w * img.width) *3) + 'px';
+        div.style.height = (input.h * 320) + 'px';
         div.classList.add('box');
         div.textContent = input.translation; // Use translation as the text content
-        container.appendChild(div);  // Append the div to the picContainer
+        document.body.appendChild(div);  // Append the div to the picContainer
 
         adjustFontSize(div);  // Assuming adjustFontSize is defined correctly elsewhere
 
@@ -146,6 +155,5 @@ function handleFileUpload(input) {
         reader.readAsDataURL(file);
     }
 }
-
 
 

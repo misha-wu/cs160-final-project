@@ -42,8 +42,8 @@ def text_ocr_to_dictionary(image_bytes):
           'translation': '',
           'x': str(x*100/img_w),
           'y': str(y*100/img_h),
-          'w': str(w*100/img_w),
-          'h': str(h*100/img_h),
+          'w': str(w/img_w),
+          'h': str(h/img_h),
           'romaji': '',
           'keywords': []
         }

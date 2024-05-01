@@ -7,8 +7,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans JP', sans-serif;
-  background: #252525;
+  background: white;
 }
+
 
 .navbar {
   display: flex;
@@ -19,25 +20,26 @@ body {
 }
 
 .navButton{
+  color: black;
   position: absolute;
   top: 50%; 
   transform: translateY(-50%);
-  border: 2px solid #32FF77;
+  border: 2px solid black;
   padding:8px;
   padding-right:10px;
   border-radius: 6px;
-  box-shadow:2px 2px #32FF77;
+  box-shadow:2px 2px black;
 }
 
 .back-button {
   text-decoration: none;
   font-size: 28px;
-  color: #32FF77;
+  color: #000000;
   position: absolute; /* Position the back button absolutely */
   left: 20px; /* Align the back button to the left */
   top: 50%; /* Vertically center the back button */
   transform: translateY(-50%); /* Adjust vertical position */
-  border: 2px solid #32FF77;
+  border: 2px solid #000000;
   padding:8px;
   border-radius: 6px;
 }
@@ -77,7 +79,7 @@ body {
   font-size: 36px;
   font-weight: 400;
   font-family: 'Reem Kufi Ink', sans-serif;
-  color: white;
+  color: black;
 
   align-items: center;
   justify-content: center;
@@ -90,7 +92,7 @@ body {
 .subtitle {
   font-size: 14px;
   font-weight: 400;
-  color: #32FF77;
+  color: #252525;
   margin-bottom: 20px;
   align-items: center;
   justify-content: center;
@@ -163,11 +165,21 @@ body {
 
 
 .picContainer {
-  position: relative;
+  /*position: relative;*/
+  display: flex;
+  justify-content: left;
+  align-items: start;
   margin-top: 16px;
-  width: 100%;
+  /*width: 100%;*/
   height: 320px;
   background-color: white;
+}
+
+.picContainer img {
+  max-width: 100%; /* Limit the image's maximum width to its container */
+  max-height: 100%; /* Limit the image's maximum height to its container */
+  width: auto; /* Allow the width to adjust automatically */
+  height: auto; /* Allow the height to adjust automatically */
 }
 
 .box {
@@ -182,8 +194,8 @@ body {
 
 @media (max-width: 768px) {
   .box {
-      padding: 3px;  // Reduce padding on smaller screens
-      font-size: 14px;  // Smaller text to fit more content
+      padding: 3px;  /*Reduce padding on smaller screens*/
+      font-size: 14px;  /*Smaller text to fit more content*/
   }
 }
 
@@ -230,6 +242,7 @@ body {
 }
 
 .defContainer {
+  color:black;
   font-family: 'Noto Sans JP', sans-serif;
   padding: 40px;
   padding-top:12px;
@@ -246,7 +259,7 @@ body {
   padding: 0;
   font-weight: bold;
   font-size:28px;
-  color: white;
+  color: black;
 }
 
 .voca-pron {
@@ -265,7 +278,7 @@ body {
   padding: 0;
   font-size:20px;
   font-weight: medium;
-  color: white;
+  color: black;
 }
 
 .sentenceCard {
@@ -285,9 +298,9 @@ body {
 
   border-radius: 12px;
 
-  border: 3px solid #32FF77;
+  border: 3px solid black;
   /* Fallback border color */
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px black;
   text-decoration: none;
 }
 
@@ -320,10 +333,19 @@ body {
 
 
 .picContainer {
+  display: flex;
+  justify-content:left;
+  align-items:start;
   margin-top: 16px;
-  width: 100%;
   height: 320px;
   background-color: white;
+}
+
+.picContainer img {
+  max-height: 100%; /* Limit the image's maximum height to its container */
+  max-width: 80%;
+  width: auto; /* Allow the width to adjust automatically */
+  height: auto; /* Allow the height to adjust automatically */
 }
 
 .systemMessage {
@@ -334,9 +356,9 @@ body {
 }
 
 .bigButton {
-  background-color: #252525;
+  background-color: white;
   margin-top: 32px;
-  border: 3px solid #32FF77;
+  border: 3px solid black;
 
   width: 180px;
   height: 40px;
@@ -345,10 +367,10 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   font-style: medium;
   font-size: 20px;
-  color: #32FF77; /* Set the text color */
+  color: black; /* Set the text color */
   text-align: center;
   line-height: 34px;
-  box-shadow:2px 2px #32FF77;
+  box-shadow:2px 2px black;
 
 }
 
