@@ -9,30 +9,39 @@ We created an app that allows users to upload manga pages easily that get transl
 
 For capturing the Japanese text from images, we used the Optical character recognition (OCR) model and Open Computer Vision (Open CV) libaries. We located and saved the conversation bubble location first. Then the Japanese text was extracted line by line, vertically and converted to English using GPT. Once the entire text within the bubble was translated, we overlayed it with the English text. This all happens in seconds and users can enjoy translated text in real-time. GPT also captured the verbs and nuances from the image as word cards that the user could save to their own word bank. 
 
+## How to run the app by yourself
 
+1. Clone the repo on your local system using VS Code or any other platform
+```bash
+git clone https://github.com/misha-wu/cs160-final-project
+```
+2. First you will need to [install Flask](https://flask.palletsprojects.com/en/3.0.x/installation).
+- First you will need to go into the directory flask_py.
+  ```bash
+  cd public/flask_py
+  ```
+- Then we need to activate the environment.
+  For MacOS/Linux:
+  ```bash
+  $ . .venv/bin/activate
+  ```
+  For Windows:
+  ```bash
+  .venv\Scripts\activate
+  ```
+  Your shell prompt will change to show the name of the activated environment.
 
-## Customer and Market Research
-We interviewed a varied set of subjects within a specific group of users. Interviewees varied in age (low to mid 20’s), gender, language fluency, occupancy, and hobbies. 
-All target users were interested in learning languages, preferably through reading media, and had a cumbersome existing method of learning.
+- Within the activated environment, use the following command to install Flask:
+  ```bash
+  $ pip install Flask
+  ```
+3. Once flask is installed, make sure `public\flask_py\.venv\Scripts` has pip and python installed. 
+5. Install all the dependent libraries and frameworks using the requirements.txt file
+```bash
+python -m pip install -r requirements.txt
+```
+3. 
 
-After doing market research, we realized that Language learners, both familiar with the language and beginners, currently rely on various online tools like Google Translate, Naver, and Easy German to translate media content such as books, switching between source text and translation apps to comprehend meanings. Desired tasks include smoother translations considering character names and nuances, a dictionary function for saving phrases and their translations, understanding grammatical structures, and comparing source text to translations for review. Users typically learn these tasks intuitively, iterating through different segments for translation and adjusting for inaccuracies. Tasks are predominantly performed at home, 
-where users have the necessary privacy and time for learning. Users consume processed data to check understanding and utilize applications to support comprehension through translation and vocabulary analysis. They access tools like phones and computers to select text from images for translation and may use auxiliary apps to store personal vocabulary. Communication between users is unnecessary as the app is designed for solo use. Task frequency varies from every few days to once a day, serving as a supplement to other learning methods. Challenges arise when translations are incorrect, hindering comprehension and potentially leading to misunderstandings of context, interfering with language learning goals.
-
-## Demo
-
-
-
-## Run the app by yourself!
-
-If you're here after accepting a GitHub Classroom assignment, you'll have your own copy of this starter repository in your GitHub account.
-You can [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the typical way, using the `git` commandline tool.
-
-It's important to **clone** the repository rather than just downloading its contents (say, as a ZIP file).
-That way, you'll be able to [commit and push](https://docs.github.com/en/get-started/using-git/about-git) your changes back to the repository when you've finished the assignment, which you **are required to do** so that we can see and grade your code.
-
-You're welcome to use a non-commandline Git client (like [GitHub Desktop](https://desktop.github.com/)) for your Git operations, but you'll need to use the commandline for the next step.
-On Windows, this will probably be PowerShell; on macOS, you can use the zsh Terminal application; and other operating systems will have their own commandline software (e.g. `bash` and `gnome-terminal` on some Linux installations).
-You may also be able to use a terminal built into your text editor, like VS Code or vim.
 
 ## Running the server
 
@@ -94,6 +103,18 @@ Make sure to stop and restart the server each time you make changes.
 
 I've written some code comments to point out various Express features that control the server's behavior.
 
+## Demo
+
+
+
+## Additional information
+
+### Customer and Market Research
+We interviewed a varied set of subjects within a specific group of users. Interviewees varied in age (low to mid 20’s), gender, language fluency, occupancy, and hobbies. 
+All target users were interested in learning languages, preferably through reading media, and had a cumbersome existing method of learning.
+
+After doing market research, we realized that Language learners, both familiar with the language and beginners, currently rely on various online tools like Google Translate, Naver, and Easy German to translate media content such as books, switching between source text and translation apps to comprehend meanings. Desired tasks include smoother translations considering character names and nuances, a dictionary function for saving phrases and their translations, understanding grammatical structures, and comparing source text to translations for review. Users typically learn these tasks intuitively, iterating through different segments for translation and adjusting for inaccuracies. Tasks are predominantly performed at home, 
+where users have the necessary privacy and time for learning. Users consume processed data to check understanding and utilize applications to support comprehension through translation and vocabulary analysis. They access tools like phones and computers to select text from images for translation and may use auxiliary apps to store personal vocabulary. Communication between users is unnecessary as the app is designed for solo use. Task frequency varies from every few days to once a day, serving as a supplement to other learning methods. Challenges arise when translations are incorrect, hindering comprehension and potentially leading to misunderstandings of context, interfering with language learning goals.
 
 ### Competitors 
 <li> Drops: This app demonstrates the application of Visual Mnemonic and interaction-based vocabulary learning. However, it’s still hard to bridge the real-world usage since the given teaching contents including vocabulary and illustrations are far from the user’s real life, which might increase the memory burden. 
