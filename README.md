@@ -9,7 +9,7 @@ We created an app that allows users to upload manga pages easily that get transl
 
 For capturing the Japanese text from images, we used the Optical character recognition (OCR) model and Open Computer Vision (Open CV) libaries. We located and saved the conversation bubble location first. Then the Japanese text was extracted line by line, vertically and converted to English using GPT. Once the entire text within the bubble was translated, we overlayed it with the English text. This all happens in seconds and users can enjoy translated text in real-time. GPT also captured the verbs and nuances from the image as word cards that the user could save to their own word bank. 
 
-## How to run the app by yourself
+## How to run the server
 
 1. Clone the repo on your local system using VS Code or any other platform
 ```bash
@@ -35,73 +35,43 @@ git clone https://github.com/misha-wu/cs160-final-project
   ```bash
   $ pip install Flask
   ```
-3. Once flask is installed, make sure `public\flask_py\.venv\Scripts` has pip and python installed. 
-5. Install all the dependent libraries and frameworks using the requirements.txt file
+3. Before running flask, make sure `public\flask_py\.venv\Scripts` has pip and python installed. 
+4. In the public folder, install the the requirements.txt file which contains the dependent libraries and frameworks:
 ```bash
 python -m pip install -r requirements.txt
 ```
-3. 
-
-
-## Running the server
-
-Make sure you have recent versions of `node` and `npm` installed (definitely at least version 12 of Node).
-Installation instructions for most operating systems are available [on the Node.js website](https://nodejs.org/en/download).
-You can check your `node` and `npm` versions using the following commands:
-
+5. Do the same within the comic_text_detector folder
 ```bash
-node --version
-npm --version
+cd public\flask_py\comic_text_detector
+python -m pip install -r requirements.txt
 ```
-
-Node.js is a tool that enables you to run JavaScript code outside of the web browser; it's a full-featured language runtime just like the `python3` or `java` command, and you can build desktop software using Node.js.
-In this case, we'll use it to run a simple Web server that serves files from the project directory.
-Although the code in `server.js` is written in JavaScript just like the JavaScript code within the `public/` directory, the code runs very differently.
-In the &ldquo;real world&rdquo;, as a Web developer, you would run `server.js` on some computer you control in the cloud (say, an Amazon AWS server).
-When people visit your website, they download HTML, CSS, and JavaScript code from your server, and that frontend code runs on their own computer.
-
-Since you're developing this project locally, all of the code will live and run on your own computer.
-Code in `server.js`, however, runs within the Node.js runtime, and the downloaded code in the `public/` directory will run within your web browser, which communicates with the web browser much as it would communicate with a real remote server when you typically brows the Internet.
-
-### Installing the server dependencies
-
-This repository contains a `package.json` file, which is the standard way to tell Node.js some information about the program, including what libraries are needed to run the server code.
-The server software requires an external library called [Express](https://expressjs.com/), which makes it easy to develop Web servers.
-
-Run the `install` command in `npm`, Node's default package manager:
-
+6. Once everyhting is installed, run Flask using the below command (ensure .venv is active):
 ```bash
-npm install
+Flask run
 ```
 
-This will read `package.json`, then look to the [NPM package repository](https://www.npmjs.com/) to grab the appropriate dependencies.
+## Commmon Errors
 
-### Run the server
-
-Run the server script on your development computer:
-
+1. If you are getting an error for modules that are not comic_text_detector or other locally forked packages
+re-add python path in `public/flask_py/.venv/lib/python3.9/site-packages`
+reinstall all requirements.txt with
 ```bash
-node server.js
+python -m pip install -r requirements.txt instead of pip install -r requirements.txt
 ```
 
-This will start a long-running process (though you should be able to stop it with `Ctrl+C` or by closing your terminal window).
-The server binds to `localhost:8000`, by default, meaning you should be able to access the web server by visiting [http://localhost:8000](http://localhost:8000) in your Web browser.
-
-If you need to change the port or host, the server code will also accept a port number or host from the environment, which looks like this on macOS or Linux:
-
+2. If you are getting an error for "could not clone remote repository" for submodule:
+```bash
+cat ~/.ssh/id_rsa.pub.
 ```
-HOST=0.0.0.0 PORT=3000 node server.js
-```
+If something shows up, copy the entire thing. else, run ssh-keygen first. (leave filename and password blank by pressing enter)
+- Save this as a new key @ https://github.com/settings/keys
+- Try pulling again
 
-This is handy if you already have a process running on port 8000 or if you need to bind to a more public network interface (typically useful **if you want to connect to the server from other devices on your network**, like a mobile phone).
-
-### Poke around
-
-You may not need to make any changes to the server code for your assignment, but it doesn't hurt to read the code and try making some changes.
-Since you're using version control, you can always reset the server code if you break anything!
-Make sure to stop and restart the server each time you make changes.
-
-I've written some code comments to point out various Express features that control the server's behavior.
+3. If getting error for modules that are comic_text_detector
+- Make sure requirements.txt is downloaded for comic_text_detector (separate file!) while in the venv
+- Make sure venv is activated and in the right folder
+- Make sure comic_text_detector is cloned locally (use git submodule update command)
+- Make sure requirements.txt is installed
 
 ## Demo
 
