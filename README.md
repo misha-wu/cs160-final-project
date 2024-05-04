@@ -9,6 +9,8 @@ We created an app that allows users to upload manga pages easily that get transl
 
 For capturing the Japanese text from images, we used the Optical character recognition (OCR) model and Open Computer Vision (Open CV) libaries. We located and saved the conversation bubble location first. Then the Japanese text was extracted line by line, vertically and converted to English using GPT. Once the entire text within the bubble was translated, we overlayed it with the English text. This all happens in seconds and users can enjoy translated text in real-time. GPT also captured the verbs and nuances from the image as word cards that the user could save to their own word bank. 
 
+<img src="https://github.com/misha-wu/cs160-final-project/blob/main/media/Mangalingua.png" width="623" height="500">
+
 ## How to run the server
 
 1. Clone the repo on your local system using VS Code or any other platform
@@ -75,7 +77,7 @@ If something shows up, copy the entire thing. else, run ssh-keygen first. (leave
 
 ## Demo
 
-
+View the App Demo in this link: [Mangalingua App Demo](https://www.youtube.com/watch?v=GJKomICIqdM)
 
 ## Additional information
 
