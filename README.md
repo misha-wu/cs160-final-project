@@ -50,7 +50,7 @@ python -m pip install -r requirements.txt
 Flask run
 ```
 
-## Commmon Errors
+## Common Errors
 
 1. If you are getting an error for modules that are not comic_text_detector or other locally forked packages
 re-add python path in `public/flask_py/.venv/lib/python3.9/site-packages`
