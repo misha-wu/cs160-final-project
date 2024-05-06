@@ -47,6 +47,10 @@ python -m pip install -r requirements.txt
 cd public\flask_py\comic_text_detector
 python -m pip install -r requirements.txt
 ```
+Note that you may have to pull comic_text_detector separately by doing the following:
+```git submodule update --init --recursive```
+in flask_py.
+
 6. Once everyhting is installed, run Flask using the below command (ensure .venv is active):
 ```bash
 Flask run
